@@ -38,7 +38,7 @@ export default function Login() {
             <h1 className="title">Entrar</h1>
             <p className="subtitle">Acesse para acompanhar e interagir com o projeto.</p>
           </div>
-          <span className="badge">🔐 Conta</span>
+          <span className="badge">🎓 Acesso</span>
         </div>
 
         <form onSubmit={handleLogin}>
@@ -99,4 +99,5 @@ export default function Login() {
 <p className="subtitle">
   Entre para ver avisos, participar e acompanhar o andamento do projeto.
 </p>
+
 

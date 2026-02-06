@@ -11,6 +11,7 @@ export default function LoginPage() {
   const [erro, setErro] = useState<string | null>(null);
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    console.log("clicou no entrar");
     e.preventDefault();
     setErro(null);
     setLoading(true);
@@ -104,3 +105,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

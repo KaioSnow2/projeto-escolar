@@ -104,10 +104,11 @@ a:hover { text-decoration: underline; }
   outline: none;
 }
 .input:focus{
-  border-color: var(--focus);
-  box-shadow: 0 0 0 3px rgba(96,165,250,0.18);
+  border-color: rgba(167,139,250,0.9);
+  box-shadow:
+    0 0 0 3px rgba(167,139,250,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.12);
 }
-.input::placeholder{ color: rgba(255,255,255,0.45); }
 
 .row{
   display:flex;
@@ -117,12 +118,11 @@ a:hover { text-decoration: underline; }
   margin-top: 10px;
 }
 
-.check{
-  display:flex;
-  align-items:center;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 13px;
+.check input{
+  accent-color: #a78bfa;
+  transform: scale(1.05);
+}
+
 }
 
 .mutedLink{

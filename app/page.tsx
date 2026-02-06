@@ -1,40 +1,21 @@
-import { supabase } from "@/lib/supabaseClient";
+import { createServerClient } from "@/lib/supabaseServer";
 
 export default async function Avisos() {
+  const supabase = createServerClient();
+
   const { data: avisos, error } = await supabase
     .from("avisos")
     .select("*")
-    .order("criado_em", { ascending: false });
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    return <div>Erro ao carregar avisos.</div>;
+  }
 
   return (
-    <main style={{ padding: 20, fontFamily: "Arial, sans-serif" }}>
-      <h1>Avisos do Projeto</h1>
-
-      {error && (
-        <p style={{ color: "crimson" }}>
-          Erro ao carregar avisos: {error.message}
-        </p>
-      )}
-
-      {!avisos?.length && !error && <p>Nenhum aviso ainda.</p>}
-
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {(avisos ?? []).map((aviso: any) => (
-          <li
-            key={aviso.id}
-            style={{
-              border: "1px solid #333",
-              borderRadius: 10,
-              padding: 12,
-              marginBottom: 12,
-            }}
-          >
-            <strong style={{ fontSize: 18 }}>{aviso.titulo}</strong>
-            <p style={{ margin: "8px 0" }}>{aviso.conteudo}</p>
-            <small>{new Date(aviso.criado_em).toLocaleString()}</small>
-          </li>
-        ))}
-      </ul>
+    <main>
+      <h1>Avisos</h1>
+      <pre>{JSON.stringify(avisos, null, 2)}</pre>
     </main>
   );
 }

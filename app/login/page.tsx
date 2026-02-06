@@ -6,17 +6,19 @@ import { supabase } from "@/lib/supabaseClient";
 
 export default function LoginPage() {
   const router = useRouter();
-
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErro(null);
     setLoading(true);
+
+    // ✅ pega do form (funciona com autofill)
+    const fd = new FormData(e.currentTarget);
+    const email = String(fd.get("email") || "").trim();
+    const senha = String(fd.get("senha") || "");
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -30,7 +32,6 @@ export default function LoginPage() {
       return;
     }
 
-    // logou: manda pro lugar padrão (pode trocar)
     router.push("/avisos");
   }
 
@@ -49,11 +50,11 @@ export default function LoginPage() {
             <label className="label">Email</label>
             <input
               className="input"
+              name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="seuemail@exemplo.com"
               required
+              autoComplete="email"
             />
           </div>
 
@@ -61,11 +62,11 @@ export default function LoginPage() {
             <label className="label">Senha</label>
             <input
               className="input"
+              name="senha"
               type={show ? "text" : "password"}
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
               placeholder="••••••••"
               required
+              autoComplete="current-password"
             />
           </div>
 

@@ -33,29 +33,26 @@ a:hover { text-decoration: underline; }
 }
 
 .card{
-  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+
+  padding: 28px 24px 24px 24px; /* ⬅️ MAIS ESPAÇO EM CIMA */
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius: 18px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(96,165,250,0.35), rgba(167,139,250,0.28), rgba(34,211,238,0.22));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0.8;
-}
 
 
 .title{
   font-size: 26px;
-  margin: 0 0 6px 0;
-  letter-spacing: 0.2px;
+  margin: 0 0 8px 0;
+  line-height: 1.2;     /* ⬅️ ISSO resolve o overflow */
+  letter-spacing: 0.3px;
 }
+
 
 .subtitle{
   margin: 0 0 14px 0;

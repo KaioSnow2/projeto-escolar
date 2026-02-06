@@ -96,3 +96,7 @@ export default function Login() {
     </div>
   );
 }
+<p className="subtitle">
+  Entre para ver avisos, participar e acompanhar o andamento do projeto.
+</p>
+

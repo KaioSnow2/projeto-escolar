@@ -125,3 +125,36 @@ a:hover { text-decoration: underline; }
   background: rgba(248,113,113,0.10);
   color: rgba(255,255,255,0.92);
 }
+.authCard { padding: 22px; }
+.authHeader{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.btn{ margin-top: 14px; }
+
+.check{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.mutedLink{
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footerHint{
+  margin-top: 14px;
+  display:flex;
+  gap: 8px;
+  justify-content:center;
+  color: var(--muted);
+  font-size: 13px;
+}
+.footerHint a{ text-decoration: underline; }

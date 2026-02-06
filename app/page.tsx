@@ -1,7 +1,9 @@
 import { createServerClient } from "@/lib/supabaseServer";
 
+
 export default async function Avisos() {
   const supabase = createServerClient();
+
 
   const { data: avisos, error } = await supabase
     .from("avisos")

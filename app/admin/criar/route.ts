@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabaseServer";
 
+
 export async function POST(req: Request) {
   const form = await req.formData();
 
@@ -8,6 +9,7 @@ export async function POST(req: Request) {
   const conteudo = String(form.get("conteudo") || "");
 
   const supabase = createServerClient();
+
 
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.redirect(new URL("/login", req.url));

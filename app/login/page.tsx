@@ -1,3 +1,5 @@
+console.log("CLIQUEI NO LOGIN");
+
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -35,3 +37,4 @@ export default function LoginPage() {
     </form>
   );
 }
+

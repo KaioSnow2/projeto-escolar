@@ -5,8 +5,7 @@ export default async function Avisos() {
 
   const { data: avisos, error } = await supabase
     .from("avisos")
-    .select("*")
-    .order("created_at", { ascending: false });
+    .select("*");
 
   if (error) {
     return <div>Erro ao carregar avisos.</div>;

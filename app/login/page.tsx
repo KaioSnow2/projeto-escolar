@@ -17,10 +17,7 @@ export default function Login() {
     setErrorMsg("");
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     setLoading(false);
 
@@ -29,18 +26,19 @@ export default function Login() {
       return;
     }
 
-    router.push("/admin");
+    // alunos podem ir pra /avisos, admins vão pro /admin (a gente ajusta já já)
+    router.push("/avisos");
   }
 
   return (
     <div className="authShell">
-      <div className="card">
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
+      <div className="card authCard">
+        <div className="authHeader">
           <div>
-            <h1 className="title">Login Admin</h1>
-            <p className="subtitle">Acesse o painel para publicar avisos e atualizações.</p>
+            <h1 className="title">Entrar</h1>
+            <p className="subtitle">Acesse para acompanhar e interagir com o projeto.</p>
           </div>
-          <span className="badge">🔒 Área restrita</span>
+          <span className="badge">🔐 Conta</span>
         </div>
 
         <form onSubmit={handleLogin}>
@@ -49,7 +47,7 @@ export default function Login() {
             <input
               className="input"
               type="email"
-              placeholder="seuemail@escola.com"
+              placeholder="seunome@escola.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -71,7 +69,7 @@ export default function Login() {
           </div>
 
           <div className="row">
-            <label style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--muted)", fontSize: 13 }}>
+            <label className="check">
               <input
                 type="checkbox"
                 checked={showPass}
@@ -80,19 +78,19 @@ export default function Login() {
               Mostrar senha
             </label>
 
-            {/* opcional: link de volta */}
-            <a href="/avisos" style={{ color: "var(--muted)", fontSize: 13 }}>
-              Ver avisos
-            </a>
+            <a className="mutedLink" href="/avisos">Ver avisos</a>
           </div>
 
-          <div style={{ marginTop: 14 }}>
-            <button className="btn" type="submit" disabled={loading}>
-              {loading ? "Entrando..." : "Entrar"}
-            </button>
-          </div>
+          <button className="btn" type="submit" disabled={loading}>
+            {loading ? "Entrando..." : "Entrar"}
+          </button>
 
           {errorMsg && <div className="error">⚠️ {errorMsg}</div>}
+
+          <div className="footerHint">
+            <span>Não tem conta?</span>
+            <a href="/cadastro">Criar agora</a>
+          </div>
         </form>
       </div>
     </div>

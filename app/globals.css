@@ -1,24 +1,33 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.authCard { padding: 22px; }
+.authHeader{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.btn{ margin-top: 14px; }
+
+.check{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.mutedLink{
+  color: var(--muted);
+  font-size: 13px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.footerHint{
+  margin-top: 14px;
+  display:flex;
+  gap: 8px;
+  justify-content:center;
+  color: var(--muted);
+  font-size: 13px;
 }
+.footerHint a{ text-decoration: underline; }
